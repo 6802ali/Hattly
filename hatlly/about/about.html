@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        #mainimage{
+            margin-top: 10px;
+            width: 100%;
+            height: 5px;
+        }
+        #image{
+            width: 100%;
+        }
+        #coverphoto{
+            background-image: url(../storage_1920x1080.jpg);
+            display: block;
+            height: 650px;
+            width: 100%;
+
+        }
+        #overlay{
+            background: black;
+            position: absolute;
+            width: 100%;
+            height: 650px;
+            top: 99px;
+            left: 0;
+            opacity: 0.6;       
+        }
+        #paragrapgh{
+            position: absolute;
+            top: 333px;
+            left: 335px;
+            width: auto;
+            height: auto;
+            color: white;
+            font-size: 57px;
+            font-family: 'Lobster Two', cursive;
+        }
+        #mission,#vision{
+            height:400px ;
+            width:100% ;
+        }
+        #missionheader{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 47px;
+            display: flex;
+            justify-content: space-around;
+        }
+        #missionparagragh{
+            display: flex;
+            font-size: 39px;
+            justify-content: space-around;
+        }
+        #visionheader{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 47px;
+            display: flex;
+            justify-content: space-around;
+        }
+        #visionparagragh{
+            display: flex;
+            font-size: 39px;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <section id="navbar">
+        <div id="logo">
+          <span>Hatlly</span>
+        </div>
+        <div id="pages">
+          <a class="pageLink" href="../index.html">Home</a>
+          <a class="pageLink" href="products.html">Products</a>
+          <a class="pageLink" href="#">About</a>
+          <a class="pageLink" href="contact.html">Contact Us</a>
+        </div>
+        <div id="cart">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+      </section>
+      <section id="header">
+            <span id="coverphoto"></span>
+             <div id="overlay"></div>
+             <p id="paragrapgh">
+                we offer electronics and fashion products
+             </p>
+      </section>
+        <section id="mission">
+            <h2 id="missionheader">mission</h2>
+            <p id="missionparagrapgh">
+                our mission is to create a smooth atmosphere for the clients where they can find all there needs from multipale 
+                criterias through online stores and focus on the selection, price and convenience
+            </p>
+        </section>
+        <section id="vision">
+            <h2 id="visionheader">vision</h2>
+            <p id="visionparagrapgh">
+                our mission is to create a smooth atmosphere for the clients where they can find all there needs from multipale 
+                criterias through online stores and focus on the selection, price and convenience
+            </p>
+        </section>
+</body>
+</html>
