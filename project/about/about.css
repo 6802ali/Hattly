@@ -1,0 +1,66 @@
+@import url(../navbar.css);
+
+body {
+  margin: 0px;
+}
+
+#mainimage{
+    margin-top: 10px;
+    width: 100%;
+    height: 5px;
+}
+#image{
+    width: 100%;
+}
+#coverphoto{
+    background-image: url(../images/storage_1920x1080.jpg);
+    display: block;
+    height: 650px;
+    width: 100%;
+
+}
+#overlay{
+    background: black;
+    position: absolute;
+    width: 100%;
+    height: 650px;
+    top: 99px;
+    left: 0;
+    opacity: 0.6;       
+}
+#paragrapgh{
+    position: absolute;
+    top: 333px;
+    left: 335px;
+    width: auto;
+    height: auto;
+    color: white;
+    font-size: 57px;
+    font-family: 'Lobster Two', cursive;
+}
+#mission,#vision{
+    height:400px ;
+    width:100% ;
+}
+#missionheader{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 47px;
+    display: flex;
+    justify-content: space-around;
+}
+#missionparagragh{
+    display: flex;
+    font-size: 39px;
+    justify-content: space-around;
+}
+#visionheader{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 47px;
+    display: flex;
+    justify-content: space-around;
+}
+#visionparagragh{
+    display: flex;
+    font-size: 39px;
+    justify-content: space-around;
+}
