@@ -2,6 +2,8 @@
 
 body {
   margin: 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 #mainimage{
@@ -38,29 +40,62 @@ body {
     font-size: 57px;
     font-family: 'Lobster Two', cursive;
 }
-#mission,#vision{
-    height:400px ;
-    width:100% ;
+#middle{
+    width: 100%;
+    height: 570px;
+    background-color: #f4f4f4f4;
+    display: flex;
 }
-#missionheader{
+#about{
+    display: flex;
+    flex-direction: row;
+}
+#ap{
+    margin-left: 0px;
+}
+#mimg{
+    height: 388px;
+    width: 600px;
+    margin-left: 390px;
+    margin-top: 35px;
+}
+#mheader{
+    text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 47px;
-    display: flex;
-    justify-content: space-around;
-}
-#missionparagragh{
-    display: flex;
     font-size: 39px;
-    justify-content: space-around;
+    margin: 64px -54px 9px 0;
 }
-#visionheader{
+#mpara{
+    font-size: 25px;
+    font-family: "Lobster Two", cursive;
+    margin: 0px 0px 0 82px;
+    text-align: center;
+}
+#footer{
+    width: 100%;
+    height: 570px;
+    background-color: #222222;
+    display: flex;
+}
+#end{
+    display: flex;
+    flex-direction: row;
+    height: 570px;
+
+}
+#vision{
+    margin-left: 28%;
+}
+#vh,#mh{
     font-family: 'Montserrat', sans-serif;
-    font-size: 47px;
-    display: flex;
-    justify-content: space-around;
-}
-#visionparagragh{
-    display: flex;
     font-size: 39px;
-    justify-content: space-around;
+    color:wheat
+}
+#vp,#mp{
+    font-family: "Lobster Two", cursive;
+    font-size: 39px;
+    color: aliceblue;
+}
+#mission{
+    width: 67%;
 }
