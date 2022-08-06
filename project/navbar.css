@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
 
 /* ---------------------------------------------------------------- NAVBAR ---------------------------------------------------------------------------------*/
 #navbar {
@@ -60,15 +66,169 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  overflow: hidden;
+}
+
+#cart #profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 275px;
+  border-radius: 25px;
+  height: 50px;
+  margin: 0px 50px 0 0;
+  transition: all 0.4s;
+}
+
+#cart #profile:hover {
+  box-shadow: 0 0 15px lightgrey;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#cart #profile span {
+  font-family: 'Montserrat';
+    font-size: 25px;
 }
 
 #cart i {
   font-size: 28px;
-  margin: 0 75px 0 0;
+  margin: 0 40px 0 0;
   transition: all 0.3s;
 }
 
 #cart i:hover {
   color: #66b5bb;
   transform: scale(1.2);
+}
+
+#navbar #sidebar {
+  position: absolute;
+  height: 700px;
+  width: 200px;
+  top: 0px;
+  background: white;
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 50px lightgrey;
+  left: -200px;
+  transition: all 0.4s;
+  display: flex;
+  flex-direction: column;
+}
+
+#navbar #sidebar span {
+  margin: 0 0 0 10px;
+  cursor: pointer;
+}
+
+#navbar #sidebar #close {
+  text-align: end;
+  font-size: 37px;
+  margin: 0 10px 0 0;
+}
+
+
+
+
+input[type=text], input[type=password] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.clearfix {
+  display: flex;
+}
+
+.button {
+  background-color: #aa0404 !important;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  opacity: 0.9;
+}
+
+.signupbtn {
+  background-color: #04AA6D !important;
+}
+
+.button:hover {
+  opacity:1;
+}
+
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; 
+  border: 1px solid #888;
+  width: 40%;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
 }

@@ -1,39 +1,37 @@
 <?php
-$servername="localhost";
-$username="root";
-$passwordd="";
-$dbname="hatlly";
+    $servername="localhost";
+    $username="root";
+    $passwordd="";
+    $dbname="hatlly";
 
-echo "TESSST Before";
-if(isset($_POST['submit'])){
-echo "TESSST";
-$conn = new mysqli($servername, $username, $passwordd, $dbname);
-if($conn->connect_error){ 
-    die("connection error" . $conn->connect_error);
-}
+    if(isset($_POST['submit'])){
 
-$fname=$_POST['fname'];
-$lname=$_POST['lname'];
-$username=$_POST['username'];
-$email=$_POST['email'];
-$password1=$_POST['password'];
-$password2=$_POST['password2'];
-$country=$_POST['country'];
-$city=$_POST['city'];
-$street=$_POST['street'];
-$phone=$_POST['phone'];
-$age=$_POST['age'];
+        $conn = new mysqli($servername, $username, $passwordd, $dbname);
+        if($conn->connect_error){
+            die("connection error" . $conn->connect_error);
+        }
 
-$sql = "INSERT INTO users(fname, lname, username, email, password, password2, country, city, street, phone, age) VALUES
- ('$fname','$lname','$username','$email','$password1','$password2','$country','$city','$street','$phone','$age')";
+        $fname=$_POST['fname'];
+        $lname=$_POST['lname'];
+        $username=$_POST['username'];
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+        $country=$_POST['country'];
+        $city=$_POST['city'];
+        $street=$_POST['street'];
+        $phone=$_POST['phone'];
+        $age=$_POST['age'];
 
-if ($conn->query($sql) === TRUE) {
-    echo "record inserted successfully";
-} 
-else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-}
+        $sql = "INSERT INTO users(fname, lname, username, email, password, country, city, street, phone, age) VALUES
+        ('$fname','$lname','$username','$email','$password','$country','$city','$street','$phone','$age')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "record inserted successfully";
+        } 
+        else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
 ?>
 <html lang="en">
 <head>
@@ -42,7 +40,7 @@ else {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="signup.css">
-    <script defer src="signup.js"></script>
+    <script defer src="validation.js"></script>
 </head>
 <body>
     <div class="container">
@@ -51,12 +49,12 @@ else {
             <div class="input-control">
                 <label for="fname">first name</label>
                 <input id="fname" name="fname" type="text">
-                <div class="error"></div>
+                <div class="error" name="error"></div>
             </div>
             <div class="input-control">
                 <label for="lname">last name</label>
                 <input id="lname" name="lname" type="text" >
-                <div class="error"></div>
+                <div class="error" name="error"></div>
             </div>
             <div class="input-control">
                 <label for="username">Username</label>
