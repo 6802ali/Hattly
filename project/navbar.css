@@ -1,11 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
-
+@import url(head.css);
 
 /* ---------------------------------------------------------------- NAVBAR ---------------------------------------------------------------------------------*/
 #navbar {
@@ -149,7 +142,6 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 .button {
-  background-color: #aa0404 !important;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -159,23 +151,35 @@ input[type=text]:focus, input[type=password]:focus {
   opacity: 0.9;
 }
 
-.signupbtn {
-  background-color: #04AA6D !important;
-}
-
-.button:hover {
-  opacity:1;
-}
-
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-.cancelbtn, .signupbtn {
-  float: left;
+.loginbtn {
   width: 50%;
 }
+.loginbtn:disabled {
+  background: grey;
+}
+.loginbtn:disabled:hover {
+  cursor: auto;
+}
+.loginbtn:enabled {
+  background-color: #23e32a !important;
+  opacity: 0.8;
+}
+.loginbtn:enabled:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.signupbtn {
+  text-align: center;
+  text-decoration: none;
+  background-color: #3f7cec !important;
+  width: 50%;
+}
+.signupbtn:hover {
+  opacity: 1;
+}
+
+
 
 .container {
   padding: 16px;

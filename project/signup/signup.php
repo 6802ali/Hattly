@@ -26,7 +26,7 @@
         ('$fname','$lname','$username','$email','$password','$country','$city','$street','$phone','$age')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "record inserted successfully";
+            header("Location: ../index.php");
         } 
         else {
             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -39,6 +39,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="signup.css">
     <script defer src="validation.js"></script>
 </head>
@@ -47,62 +48,53 @@
         <form id="form" action="" method="POST" onsubmit="validateInputs(document.signupForm)">
             <h1>Registration</h1>
             <div class="input-control">
-                <label for="fname">first name</label>
-                <input id="fname" name="fname" type="text">
+                <input id="fname" name="fname" type="text" placeholder="First Name">
                 <div class="error" name="error"></div>
             </div>
             <div class="input-control">
-                <label for="lname">last name</label>
-                <input id="lname" name="lname" type="text" >
+                <input id="lname" name="lname" type="text" placeholder="Last Name">
                 <div class="error" name="error"></div>
             </div>
             <div class="input-control">
-                <label for="username">Username</label>
-                <input id="username" name="username" type="text">
+                <input id="username" name="username" type="text" placeholder="Username">
                 <div class="error"></div>
             </div>
             <div class="input-control">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="text">
+                <input id="email" name="email" type="text" placeholder="Email">
                 <div class="error"></div>
             </div>
             <div class="input-control">
-                <label for="password">Password</label>
-                <input id="password"name="password" type="password">
+                <input id="password"name="password" type="password" placeholder="Password">
                 <div class="error"></div>
             </div>
             <div class="input-control">
-                <label for="password2">Password  again</label>
-                <input id="password2"name="password2" type="password">
+                <input id="password2"name="password2" type="password" placeholder="Re-Enter your password">
                 <div class="error"></div>
             </div>
             <div class="input-control">
-                <label for="country">country</label>
-                <input id="country"name="country" type="country">
+                <input id="country"name="country" type="country" placeholder="Country">
                 <div class="error"></div>
             </div>
             <div class="input-control">
-                <label for="city">city</label>
-                <input id="city"name="city" type="city">
+                <input id="city"name="city" type="city" placeholder="City">
                 <div class="error"></div>
             </div>
             <div class="input-control">
-                <label for="street">street</label>
-                <input id="street"name="street" type="street">
+                <input id="street"name="street" type="street" placeholder="Street">
                 <div class="error"></div>
             </div>
             <div class="input-control">
-                <label for="phone">phone</label>
-                <input id="phone"name="phone" type="phone">
+                <input id="phone"name="phone" type="phone" placeholder="Phone Number">
                 <div class="error"></div>
             </div>
             <div class="input-control">
-                <label for="age">age</label>
-                <input id="age"name="age" type="age">
+                <input id="age"name="age" type="age" placeholder="Age">
                 <div class="error"></div>
-            </div>  
-            <!-- <button type="submit" id="submit" name="submit" value="submit">Sign Up</button> -->
-            <input type="submit" value="submit" name="submit" id="submit">
+            </div> 
+            <button type="submit" value="submit" name="submit" id="submit" class="submit-container">
+                <i class="fa-solid fa-lock"></i>
+                <span>Submit</span>
+            </button>
         </form>
     </div>
 </body>

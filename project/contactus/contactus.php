@@ -62,87 +62,10 @@
 </head>
 <body>
   <!-------------------------------------- NAVBAR -------------------------------------->
-  <section id="navbar">
-    <div id="logo">
-      <span>Hatlly</span>
-    </div>
-    <div id="pages">
-      <a class="pageLink" href="../index.php">Home</a>
-      <a class="pageLink" href="">Products</a>
-      <a class="pageLink" href="../about/about.php">About</a>
-      <a class="pageLink" href="#">Contact Us</a>
-    </div>
-    <div id="cart">
-      <?php
-        if(isset($_SESSION['username'])) {
-          echo <<<HTML
-            <div id="profile">
-              <span>{$_SESSION['username']}</span>
-            </div>
-          HTML;
-        } else {
-          echo <<<HTML
-            <i class="fa-solid fa-user" onclick="document.getElementById('id01').style.display='block'"></i>
-          HTML;
-        }
-      ?>
-      <i class="fa-solid fa-cart-shopping"></i>
-    </div>
-  
-    <div id="sidebar">
-        <span id="close">&times;</span>
-        <span id="logout">Log out</span>
-    </div>
-    <script>
-      document.querySelector('#cart #profile').onclick = function() {
-        document.getElementById('sidebar').style.left = "0px"
-      }
-      document.querySelector('#navbar #sidebar #close').onclick = function() {
-        document.getElementById('sidebar').style.left = "-200px"
-      }
-      document.querySelector('#navbar #sidebar #logout').onclick = () => {
-        $.ajax({ 
-          url: '../logout.php',
-          success: function(output) {
-            alert(output);
-            window.location.href = 'contactus.php';
-          }
-        });
-      }
-    </script>
-
-    <div id="id01" class="modal">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <form class="modal-content" action="" method="GET">
-        <div class="container">
-          <h1>log in</h1>
-          <p>Enter your username and password to login into your account.</p>
-          <hr>
-          <label for="email"><b>username</b></label>
-          <input type="text" placeholder="Enter username" name="username" required>
-    
-          <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
-          
-          <div class="clearfix">
-            <button type="button" class="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <input name="submit" type="submit" class="signupbtn button">
-          </div>
-        </div>
-      </form>
-    </div>
-    <script>
-      var modal = document.getElementById('id01');
-
-      window.onclick = function(event){
-        if(event.target == modal){
-          modal.style.display = "none";
-        }
-      }
-
-      /* console.log(document.getElementById('php_console').innerHTML); */
-    </script>
-  </section>
+  <?php 
+    $_GET["page"] = basename($_SERVER['PHP_SELF']);
+    include '../navbar.php'; 
+  ?>
 
   <!-------------------------------------- CONTACT US -------------------------------------->
   <section id="contactus">

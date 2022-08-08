@@ -17,42 +17,6 @@
     echo '<script>console.log("'.implode(', ', $flattened).'")</script>';
   }
 
-  $x = 2;
-  $y = 3;
-  $z = $x / $y;
-  $z = $x % $y;
-
-
-  $servername="localhost";
-  $username="root";
-  $passwordd="";
-  $dbname="hatlly";
-
-  if(isset($_GET['submit'])){
-    
-    $mysqli = new mysqli($servername, $username, $passwordd, $dbname);
-    if($mysqli->connect_error){
-        die("connection error" . $mysqli->connect_error);
-    }
-    
-    $username = $_GET['username'];
-    $password = $_GET['password'];
-
-    $sql = "SELECT username,password FROM users WHERE username = '$username' AND password = '$password'";
-
-    $result = $mysqli->query($sql)->fetch_object();
-
-    if(isset($result)) {
-      $_SESSION['username'] = $result->username;
-      $_SESSION['password'] = $result->password;
-    } else {
-      echo "<script>
-        alert('invalid username or password')</script>
-        </script>
-      ";
-    }
-
-  }
 ?>
 
 
@@ -71,86 +35,10 @@
 <body>
 
   <!-------------------------------------- NAVBAR -------------------------------------->
-  <section id="navbar">
-    <div id="logo">
-      <span>Hatlly</span>
-    </div>        
-    <div id="pages">
-      <a class="pageLink" href="index.php">Home</a> 
-      <a class="pageLink" href="">Products</a>
-      <a class="pageLink" href="about/about.php">About</a>
-      <a class="pageLink" href="contactus/contactus.php">Contact Us</a>
-    </div>
-    <div id="cart">
-      <?php
-        if(isset($_SESSION['username'])) {
-          echo <<<HTML
-            <div id="profile">
-              <span>{$_SESSION['username']}</span>
-            </div>
-          HTML;
-        } else {
-          echo <<<HTML
-            <i class="fa-solid fa-user" onclick="document.getElementById('id01').style.display='block'"></i>
-          HTML;
-        }
-      ?>
-      <i class="fa-solid fa-cart-shopping"></i>
-    </div>
-  
-    <div id="sidebar">
-        <span id="close">&times;</span>
-        <span id="logout">Log out</span>
-    </div>
-    <script>
-      document.querySelector('#cart #profile').onclick = function() {
-        document.getElementById('sidebar').style.left = "0px"
-      }
-      document.querySelector('#navbar #sidebar #close').onclick = function() {
-        document.getElementById('sidebar').style.left = "-200px"
-      }
-      document.querySelector('#navbar #sidebar #logout').onclick = () => {
-        $.ajax({ 
-          url: 'logout.php',
-          success: function(output) {
-            window.location.href = 'index.php';
-          }
-        });
-      }
-    </script>
-
-    <div id="id01" class="modal">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <form class="modal-content" action="" method="GET">
-        <div class="container">
-          <h1>log in</h1>
-          <p>Enter your username and password to login into your account.</p>
-          <hr>
-          <label for="email"><b>username</b></label>
-          <input type="text" placeholder="Enter username" name="username" required>
-    
-          <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
-          
-          <div class="clearfix">
-            <button type="button" class="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <input name="submit" type="submit" class="signupbtn button">
-          </div>
-        </div>
-      </form>
-    </div>
-    <script>
-      var modal = document.getElementById('id01');
-
-      window.onclick = function(event){
-        if(event.target == modal){
-          modal.style.display = "none";
-        }
-      }
-
-      /* console.log(document.getElementById('php_console').innerHTML); */
-    </script>
-  </section>
+  <?php 
+    $_GET["page"] = basename($_SERVER['PHP_SELF']);
+    include 'navbar.php'; 
+  ?>
 
   <section id="welcome">
     <div id="heading">Welcome to <span>Hattly</span></div>
