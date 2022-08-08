@@ -103,7 +103,7 @@ echo <<<HTML
         $.ajax({ 
           url: 'loginVal.php',
           type: 'GET',
-          data: { 
+          data: {
             username: usernameInput.value,
             password: passwordInput.value,
             session: session_start

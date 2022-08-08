@@ -123,3 +123,8 @@ body {
     margin: 0 25px 0 10px;
     color: white;
 }
+
+.already-found {
+    color: red;
+    opacity: 0;
+}

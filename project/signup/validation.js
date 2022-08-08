@@ -13,15 +13,39 @@ const age = document.getElementById('age');
 const submit = document.getElementById('submit'); submit.disabled = true; 
 var flag = true;
 
+loginVal = (session_start) => {
+  $.ajax({ 
+    url: 'signupVal.php',
+    type: 'GET',
+    data: { 
+      username: username.value,
+      session: session_start
+    },
+    success: function(output) {
+      console.log("----------------")
+      console.log("ajax succes")
+      console.log("output: " + output)
+
+      if(output == "found") {
+        submit.disabled = true;
+        setError(username, 'Username already exists');
+      } else if (output == "not found") {
+        submit.disabled = false;
+      }
+    }
+  });
+}
+
 const checkval = () => {
   var noError = true;
   form.querySelectorAll(".input-control").forEach(input => {
+    console.log(input.classList);
     if (!input.classList.contains('success')) {noError = false;}
   });
   flag = noError;
   console.log(flag);
   if (flag) {
-    submit.disabled = false;
+    loginVal(false);
   } else {
     submit.disabled = true;
   }
