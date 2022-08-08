@@ -1,25 +1,6 @@
 <?php
-
   session_start();
-
-  function printr($msg) {
-    print_r('<p id="php_console" style="text-align:center;">');
-    print_r($msg);
-    print_r('</p>');}
-  function consoleLog($msg) {
-    echo '<script type="text/javascript">' .
-          'console.log("' . $msg . '");</script>';}
-  function consoleLogObject($obj) {
-    $flattened = $obj;
-    array_walk($flattened, function(&$value, $key) {
-        $value = "{$key}:{$value}";
-    });
-    echo '<script>console.log("'.implode(', ', $flattened).'")</script>';
-  }
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <title>Document</title>
+  <title>Hattly</title>
 </head>
 <body>
 

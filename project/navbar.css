@@ -1,5 +1,9 @@
 @import url(head.css);
 
+body {
+  overflow-x: hidden;
+}
+
 /* ---------------------------------------------------------------- NAVBAR ---------------------------------------------------------------------------------*/
 #navbar {
   display: flex;
@@ -231,8 +235,109 @@ hr {
   display: table;
 }
 
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
+#cartWindow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 60px;
+  right: -600px;
+  transition: all 0.4s;
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 0 15px lightgrey;
+  display: flex;
+  flex-direction: column;
 }
+
+#cartWindow #head{
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#cartWindow #head span{
+  font-family: 'Quicksand';
+  letter-spacing: 5px;
+}
+
+#cartWindow #head span:nth-child(2){
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 40px;
+  transition: all 0.4s;
+}
+
+#cartWindow #head span:nth-child(2):hover{
+  transform: scale(1.3);
+  color: #66b5bb;
+  cursor: pointer;
+}
+
+#cartWindow #products{
+  width: 100%;
+  height: 60%;
+  overflow-y: scroll;
+}
+
+#cartWindow #products .product{
+  width: 100%;
+  height: 180px;
+  display: flex;
+}
+
+#cartWindow #products .product .image{
+  width: 40%;
+  background-image: url("./images/refurb-2019-imac-215-gallery.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+#cartWindow #products .product .details{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#cartWindow #products .product .details .name{
+
+}
+#cartWindow #products .product .details .info{
+  font-size: 20px;
+}
+
+#cartWindow #checkout{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#cartWindow span{
+  font-size: 25px;
+  font-family: 'Quicksand';
+}
+
+#cartWindow button{
+  font-size: 20px;
+  font-family: 'Quicksand';
+  padding: 6px 15px;
+  border-radius: 15px;
+  border: 1px solid lightgrey;
+  background: whitesmoke;
+  transition: all 0.4s;
+}
+
+#cartWindow button:hover{
+  transform: scale(1.1);
+  background: #343434;
+  color: white;
+  cursor: pointer;
+}
+
+

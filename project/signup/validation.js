@@ -109,7 +109,7 @@ email.oninput = () => {
   }
 }
 password.oninput = () => {
-  const regex = /^[A-Za-z][A-Za-z0-9_]{8,22}$/;
+  const regex = /^[A-Za-z0-9_]{8,22}$/;
   console.log(password.value + ' : ' + regex.test(String(password.value)));
   
   if (regex.test(String(password.value))) {

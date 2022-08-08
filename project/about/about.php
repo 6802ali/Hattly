@@ -1,52 +1,5 @@
 <?php
-
   session_start();
-
-  function printr($msg) {
-    print_r('<p id="php_console" style="text-align:center;">');
-    print_r($msg);
-    print_r('</p>');}
-  function consoleLog($msg) {
-    echo '<script type="text/javascript">' .
-          'console.log("' . $msg . '");</script>';}
-  function consoleLogObject($obj) {
-    $flattened = $obj;
-    array_walk($flattened, function(&$value, $key) {
-        $value = "{$key}:{$value}";
-    });
-    echo '<script>console.log("'.implode(', ', $flattened).'")</script>';
-  }
-
-  $servername="localhost";
-  $username="root";
-  $passwordd="";
-  $dbname="hatlly";
-
-  if(isset($_GET['submit'])){
-    
-    $mysqli = new mysqli($servername, $username, $passwordd, $dbname);
-    if($mysqli->connect_error){
-        die("connection error" . $mysqli->connect_error);
-    }
-    
-    $username = $_GET['username'];
-    $password = $_GET['password'];
-
-    $sql = "SELECT username,password FROM users WHERE username = '$username' AND password = '$password'";
-
-    $result = $mysqli->query($sql)->fetch_object();
-
-    if(isset($result)) {
-      $_SESSION['username'] = $result->username;
-      $_SESSION['password'] = $result->password;
-    } else {
-      echo "<script>
-        alert('invalid username or password')</script>
-        </script>
-      ";
-    }
-
-  }
 ?>
 
 <!DOCTYPE html>

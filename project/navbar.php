@@ -48,6 +48,60 @@ HTML;
         }
 echo <<<HTML
       <i class="fa-solid fa-cart-shopping"></i>
+      <div id="cartWindow">
+        <div id="head">
+          <span>Your Orders</span>
+          <span>&times;</span>
+        </div>
+        <div id="products">
+          <div class="product">
+            <span class="image"></span>
+            <div class="details">
+              <span class="name">Samsung Galaxy 99</span>
+              <span class="info">Price: 9,999</span>
+              <span class="info">Quantity: 2</span>
+              <span class="info">Total: 19,999</span>
+            </div>
+          </div>
+          
+          <div class="product">
+            <span class="image"></span>
+            <div class="details">
+              <span class="name">Samsung Galaxy 99</span>
+              <span class="info">Price: 9,999</span>
+              <span class="info">Quantity: 2</span>
+              <span class="info">Total: 19,999</span>
+            </div>
+          </div>
+
+          <div class="product">
+            <span class="image"></span>
+            <div class="details">
+              <span class="name">Samsung Galaxy 99</span>
+              <span class="info">Price: 9,999</span>
+              <span class="info">Quantity: 2</span>
+              <span class="info">Total: 19,999</span>
+            </div>
+          </div>
+        </div>
+        <div id="checkout">
+          <span>Total: 39,999 EGP</span>
+          <button>Checkout</button>
+        </div>
+      </div>
+      <script>
+        $(document).ready(function(){
+          $('#cart .fa-cart-shopping').click(function(){
+            $('#cartWindow').css("right", "50px");
+          });
+
+          $("#cartWindow #head span:nth-child(2)").click(function(){
+            $('#cartWindow').css("right", "-600px");
+          });
+        });
+
+        
+      </script>
     </div>
   
     <div id="sidebar">
@@ -92,12 +146,6 @@ echo <<<HTML
       </form>
     </div>
     <script>
-      var modal = document.getElementById('id01');
-      window.onclick = function(event){
-        if(event.target == modal){
-          modal.style.opcity = "0";
-        }
-      }
 
       loginVal = (session_start) => {
         $.ajax({ 
@@ -130,7 +178,6 @@ echo <<<HTML
       document.querySelector(".loginbtn").onclick = () => {
         loginVal("true")
       }
-
         
     </script>
   </section>

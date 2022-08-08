@@ -98,9 +98,6 @@
                 <i class="fa-solid fa-lock"></i>
                 <span>Submit</span>
             </button>
-            <span class="already-found">
-                The username and password entered has already been registered
-            </span>
         </form>
     </div>
 </body>
