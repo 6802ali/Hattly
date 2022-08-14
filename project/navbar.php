@@ -4,21 +4,27 @@ $currentPage = $_GET["page"];
 switch ($currentPage) {
   case "index.php":
     $links["Home"] = "#";
-    $links["Products"] = "";
+    $links["Products"] = "products/products.php";
     $links["About"] = "about/about.php";
     $links["Contact Us"] = "contactus/contactus.php";
     break;
   case "about.php":
     $links["Home"] = "../index.php";
-    $links["Products"] = "";
+    $links["Products"] = "../products/products.php";
     $links["About"] = "#";
     $links["Contact Us"] = "../contactus/contactus.php";
     break;
   case "contactus.php":
     $links["Home"] = "../index.php";
-    $links["Products"] = "";
+    $links["Products"] = "../products/products.php";
     $links["About"] = "../about/about.php";
     $links["Contact Us"] = "#";
+    break;
+  case "products.php":
+    $links["Home"] = "../index.php";
+    $links["Products"] = "#";
+    $links["About"] = "../about/about.php";
+    $links["Contact Us"] = "../contactus/contactus.php";
     break;
 }
 
@@ -28,8 +34,8 @@ echo <<<HTML
       <span>Hatlly</span>
     </div>        
     <div id="pages">
-      <a class="pageLink" href= {$links['Home']} >Home</a> 
-      <a class="pageLink" href="">Products</a>
+      <a class="pageLink" href= {$links['Home']} >Home</a>
+      <a class="pageLink" href={$links['Products']}>Products</a>
       <a class="pageLink" href={$links['About']}>About</a>
       <a class="pageLink" href={$links['Contact Us']}>Contact Us</a>
     </div>
@@ -54,38 +60,30 @@ echo <<<HTML
           <span>&times;</span>
         </div>
         <div id="products">
-          <div class="product">
-            <span class="image"></span>
-            <div class="details">
-              <span class="name">Samsung Galaxy 99</span>
-              <span class="info">Price: 9,999</span>
-              <span class="info">Quantity: 2</span>
-              <span class="info">Total: 19,999</span>
-            </div>
-          </div>
-          
-          <div class="product">
-            <span class="image"></span>
-            <div class="details">
-              <span class="name">Samsung Galaxy 99</span>
-              <span class="info">Price: 9,999</span>
-              <span class="info">Quantity: 2</span>
-              <span class="info">Total: 19,999</span>
-            </div>
-          </div>
 
-          <div class="product">
-            <span class="image"></span>
-            <div class="details">
-              <span class="name">Samsung Galaxy 99</span>
-              <span class="info">Price: 9,999</span>
-              <span class="info">Quantity: 2</span>
-              <span class="info">Total: 19,999</span>
-            </div>
-          </div>
+HTML;
+        $cartSum = 0;
+        if(isset($_SESSION['cart'])) {
+          foreach($_SESSION['cart'] as $product) {
+            $productImage = '"background-image: url(../images/products/' . $product["image"] . ')"';
+
+            echo <<<HTML
+              <div class="product">
+                <span class="image" style=$productImage></span>
+                <div class="details">
+                  <span class="name">$product[title]</span>
+                  <span class="info">Price: $product[price] EGP</span>
+                </div>
+              </div>
+            HTML;
+            $cartSum += $product["price"];
+          }
+        }
+
+echo <<<HTML
         </div>
         <div id="checkout">
-          <span>Total: 39,999 EGP</span>
+          <span>Total: <span>$cartSum</span> EGP</span>
           <button>Checkout</button>
         </div>
       </div>
@@ -145,11 +143,12 @@ echo <<<HTML
         </div>
       </form>
     </div>
-    <script>
+    <script>           
 
       loginVal = (session_start) => {
         $.ajax({ 
-          url: 'loginVal.php',
+          url: 'loginVal.php',  
+          async: false,
           type: 'GET',
           data: {
             username: usernameInput.value,

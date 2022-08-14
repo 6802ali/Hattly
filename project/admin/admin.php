@@ -17,7 +17,6 @@
 
   if(isset($_POST['Add'])){
 
-
     $id=$_POST['id'];
     $title=$_POST['title'];
     $brand=$_POST['brand'];
@@ -31,12 +30,76 @@
     $sql = "INSERT INTO products(id, title, brand, price, quantity, description, image, category, type) VALUES
     ('$id','$title','$brand','$price','$quantity','$description','$image','$category','$type')";
 
-    /* if ($mysqli->query($sql) === TRUE) {
+    if ($mysqli->query($sql) === TRUE) {
         header("Location: admin.php");
     } 
     else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-    } */
+    }
+  }
+
+  if(isset($_POST['Update'])){
+
+    $id=$_POST['id'];
+    $title=$_POST['title'];
+    $brand=$_POST['brand'];
+    $price=$_POST['price'];
+    $quantity=$_POST['quantity'];
+    $description=$_POST['description'];
+    $image=$_POST['image'];
+    $category=$_POST['category'];
+    $type=$_POST['type'];
+
+    $sql = "UPDATE products SET id = '$id', title = '$title', brand = '$brand', price = '$price', quantity = '$quantity', description = '$description'
+              , image = '$image', category = '$category', type = '$type' WHERE id = '$id'";
+
+    if ($mysqli->query($sql) === TRUE) {
+        header("Location: admin.php");
+    } 
+    else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+  }
+
+  if(isset($_POST['Remove'])){
+    
+
+    $id=$_POST['Remove'];
+
+    $sql = "DELETE FROM products WHERE id='$id'";
+
+    if ($mysqli->query($sql) === TRUE) {
+        header("Location: admin.php");
+    } 
+    else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+  }
+
+  if(isset($_POST['uploadImage'])) {
+    print_r($_FILES);
+   // name of the uploaded file
+   $filename = $_FILES['img']['name'];
+   // destination of the file on the server
+   $destination = '../images/products/' . $filename;
+   // get the file extension
+   $extension = pathinfo($filename, PATHINFO_EXTENSION);
+   // the physical file on a temporary uploads directory on the server
+   $file = $_FILES['img']['tmp_name'];
+   $size = $_FILES['img']['size'];
+
+   if (!in_array($extension, ['jpeg', 'jpg', 'png'])) {
+       echo "You file extension must be .jpeg, .jpg or .png";
+   } elseif ($_FILES['img']['size'] > 10000000) { // file shouldn't be larger than 1Megabyte
+       echo "File too large!";
+   } else {
+        // move the uploaded (temporary) file to the specified destination
+        if (move_uploaded_file($file, $destination)) {
+            echo "File uploaded successfully!";
+        } else {
+            echo "Failed to upload file.";
+        }
+    }
   }
 ?>
 
@@ -134,31 +197,46 @@
               $('#edit').css('left', '0%');
             });
 
+            $('.icon').click(function(){
+              var id = $(this).parent().find('td:nth-child(1)').text();
+              $.ajax({
+                url: 'admin.php',
+                type: 'POST',
+                data: {
+                  Remove: id,
+                },
+                success: function(data){
+                  window.location.reload();
+                }
+              });
+            });
+
           });
         </script>
 
         <div id="edit">
           <form action="" method="post">
             <div>
-            <input type="text" name="id" placeholder="ID">
-            <input type="text" name="title" placeholder="Title">
-            <input type="text" name="brand" placeholder="Brand">
-            <input type="text" name="price" placeholder="Price">
-            <input type="text" name="quantity" placeholder="Quantity">
-            <input type="text" name="description" placeholder="Description">
-            <input type="text" name="image" placeholder="Image">
-            <input type="text" name="category" placeholder="Category">
-            <input type="text" name="type" placeholder="Type">
+            <input type="text" name="id" placeholder="ID" required>
+            <input type="text" name="title" placeholder="Title" required>
+            <input type="text" name="brand" placeholder="Brand" required>
+            <input type="text" name="price" placeholder="Price" required>
+            <input type="text" name="quantity" placeholder="Quantity" required>
+            <input type="text" name="description" placeholder="Description" required>
+            <input type="text" name="image" placeholder="Image" required>
+            <input type="text" name="category" placeholder="Category" required>
+            <input type="text" name="type" placeholder="Type" required>
             <input type="submit" name="Update" value="Update">
             <input type="submit" name="Add" value="Add">
             </div>
-
-            <label id="image" for="img">
-              <input type="file" id="img" name="img">
-            </label>
           </form> 
 
-          
+          <form method="post" action="" id="image" for="img" enctype="multipart/form-data">
+            <label for="img">
+              <input type="file" id="img" name="img" required>
+              <input type="submit" name="uploadImage" id="uploadImage">
+            </label>
+          </form>
 
           <div id="upload">
             <div>Upload Image: <span></span></div>
@@ -169,9 +247,25 @@
         <script>
           $(document).ready(function(){
 
-            $("input[name='Add']").click(() => {
-              $("input[name='fileToUpload']").click();
-            })
+            $("div[id='upload']").hover(
+              () => {
+                $("#edit #image input[name='uploadImage']").css("opacity", "0.8")},
+              () => {
+                $("#edit #image input[name='uploadImage']").css("opacity", "0");
+              }
+            );
+
+            $("#edit #image input[name='uploadImage']").hover(
+              () => {
+                $("#edit #image input[name='uploadImage']").css("opacity", "0.8");
+                $("div[id='upload']").css("opacity", "0.8")},
+              () => {
+                $("#edit #image input[name='uploadImage']").css("opacity", "0");
+                $("div[id='upload']").css("opacity", "0");
+              }
+            );
+
+            
 
             $('#upload').click(function(){
               $('#img').click();

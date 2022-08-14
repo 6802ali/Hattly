@@ -245,8 +245,9 @@ hr {
   background: white;
   border-radius: 25px;
   box-shadow: 0 0 15px lightgrey;
-  display: flex;
+  display: flex;   
   flex-direction: column;
+  z-index: 2;
 }
 
 #cartWindow #head{
