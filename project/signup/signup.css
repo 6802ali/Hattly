@@ -1,0 +1,130 @@
+@import url(../head.css);
+
+body {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#form {
+    width: 60%;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#form h1 {
+    color: #0f2027;
+    text-align: center;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 15px;
+    margin: 20px 0 40px 0;
+}
+
+#form > input {
+    height: 40px;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin: 0px 20px;
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+	border-radius: 20px;
+	display: block;
+	font-size: 12px;
+	padding: 15px;
+	width: 100%;
+    transition: all 0.2s;
+    font-size: 15px;
+}
+
+.input-control input:focus {
+    border: 1px solid lightgrey;
+    box-shadow: 0 0 5px lightgrey;
+    transform: scale(1.05);
+    outline: 0px !important;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+    margin: 0 0 15px 0;
+}
+
+.input-control input::placeholder {
+    opacity: 0.5;
+}
+
+#form .submit-container {
+    height: 45px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 1px solid lightgrey;
+    border-radius: 20px;
+    width: 125px;
+    margin: 4px 0 0 0;
+    transition: all 0.3s;
+}
+
+#form .submit-container i {
+    font-size: 20px;
+    transition: all 0.3s;
+    position: absolute;
+    left: 62%;
+}
+
+#form .submit-container span {
+    border: 0px;
+    font-size: 20px;
+    transition: all 0.3s;
+    margin: 0 10px 0 10px;
+}
+
+#form .submit-container:enabled {
+    background: #09c372;
+}
+
+#form .submit-container:enabled:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#form .submit-container:enabled i {
+    opacity: 0;
+}
+
+#form .submit-container:enabled span {
+    margin: 0 25px 0 10px;
+    color: white;
+}
+
+.already-found {
+    color: red;
+    opacity: 0;
+}
